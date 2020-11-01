@@ -15,4 +15,5 @@ if __name__ == '__main__':
             if current_repositories > last_repositories:
                 send_email.send_email(api.get_target_user(), api.get_email_to())
             last_repositories = current_repositories
-        sleep(1800)
+        print('Sleeping for 15 minutes / 900 seconds)
+        sleep(900)
