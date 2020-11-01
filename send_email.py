@@ -13,4 +13,5 @@ def send_email(target_user: str, send_to: str):
     body = f'Hey there! {target_user} created a new repository. Check it out: {repositories_link}'
     message = f'Subject: {subject}\n\n{body}'
     server.sendmail(api.get_email_from(), send_to, message)
+    print(f'Sending e-mail to {send_to}.')
     server.quit()
