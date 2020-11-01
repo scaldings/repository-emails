@@ -1,4 +1,5 @@
 import smtplib
+import api
 
 
 def send_email(target_user: str, send_to: str):
@@ -6,11 +7,10 @@ def send_email(target_user: str, send_to: str):
     server.ehlo()
     server.starttls()
     server.ehlo()
-    text = open('information.txt', 'r').read().split('\n')
-    server.login(text[0], text[1])
+    server.login(api.get_email_from(), api.get_email_password())
     subject = f'{target_user} created a new repository!'
     repositories_link = f'https://github.com/{target_user}?tab=repositories'
     body = f'Hey there! {target_user} created a new repository. Check it out: {repositories_link}'
     message = f'Subject: {subject}\n\n{body}'
-    server.sendmail(text[0], send_to, message)
+    server.sendmail(api.get_email_from(), send_to, message)
     server.quit()
