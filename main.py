@@ -2,13 +2,13 @@ import api
 import send_email
 from time import sleep
 
-repos_init = False
+repo_init = False
 last_repositories = 0
 
 if __name__ == '__main__':
-    if repos_init is False:
+    if repo_init is False:
         last_repositories = api.get_repositories_count(api.get_target_user())
-        repos_init = True
+        repo_init = True
     while True:
         current_repositories = api.get_repositories_count(api.get_target_user())
         if current_repositories is not last_repositories:
